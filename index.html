@@ -1,409 +1,306 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>پورتفولیو — مهدی احدی</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;900&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        margin: 0;
-        font-family: "B Nazanin", sans-serif;
-        background: #f5f6f8;
-        color: #222;
-        overflow-x: hidden;
-      }
-      nav {
-        background: #fff;
-        padding: 1rem 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      }
-      nav ul {
-        list-style: none;
-        display: flex;
-        gap: 1.6rem;
-        margin: 0;
-      }
-      nav ul li a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 600;
-        transition: 0.3s;
-      }
-      nav ul li a:hover {
-        color: #0077ff;
-      }
-      nav .logo {
-        font-size: 1.4rem;
-        font-weight: 900;
-      }
-      header {
-        padding: 4rem 2rem;
-        max-width: 1200px;
-        margin: auto;
-        display: flex;
-        gap: 3rem;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-      }
-      .intro {
-        max-width: 550px;
-        animation: fadeIn 1s ease;
-      }
-      .intro h1 {
-        font-size: 2.8rem;
-        font-weight: 900;
-        margin-bottom: 0.5rem;
-      }
-      .intro p {
-        font-size: 1.1rem;
-        color: #555;
-        line-height: 1.8;
-      }
-      .btn {
-        display: inline-block;
-        padding: 0.9rem 1.4rem;
-        background: #0077ff;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 10px;
-        margin-top: 1.3rem;
-        font-weight: 600;
-        transition: 0.3s;
-      }
-      .btn:hover {
-        background: #005ad4;
-        transform: translateY(-2px);
-      }
-      .hero-img {
-        width: 350px;
-        border-radius: 18px;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-        animation: fadeInUp 1s ease;
-      }
-      .section-title {
-        text-align: center;
-        font-size: 2.2rem;
-        font-weight: 900;
-        margin-top: 4rem;
-      }
-      .projects {
-        max-width: 1200px;
-        margin: auto;
-        padding: 2rem;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-      }
-      .project-card {
-        background: #fff;
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        display: flex;
-        flex-direction: column;
-        height: auto;
-        transition: 0.3s;
-      }
-      .project-card:hover {
-        transform: translateY(-4px);
-      }
-      .project-card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-      }
-      .project-info {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        padding: 18px;
-      }
-      .project-info h3 {
-        font-size: 1.2rem;
-        margin-bottom: 8px;
-      }
-      .project-info p {
-        color: #555;
-        font-size: 0.95rem;
-        margin-bottom: 6px;
-      }
-      .project-info div.buttons {
-        display: flex;
-        gap: 10px;
-        margin-top: 10px;
-        flex-wrap: wrap;
-      }
-      .project-info button {
-        background: #2e7eff;
-        color: #fff;
-        border: none;
-        padding: 10px;
-        border-radius: 10px;
-        font-size: 0.95rem;
-        cursor: pointer;
-        transition: 0.3s;
-      }
-      .project-info button:hover {
-        background: #1b5ed8;
-      }
-      .project-info a button {
-        background: #00bfa6;
-      }
-      .project-info a button:hover {
-        background: #008e7a;
-      }
-      .lightbox {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        backdrop-filter: blur(4px);
-        background: rgba(0, 0, 0, 0.8);
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-      }
-      .lightbox-content {
-        max-width: 90%;
-        max-height: 80%;
-        animation: fadeInScale 0.4s ease;
-      }
-      .lightbox video,
-      .lightbox img,
-      .lightbox iframe {
-        width: 100%;
-        max-height: 80vh;
-        border-radius: 12px;
-      }
-      .lightbox-close {
-        position: absolute;
-        top: 25px;
-        right: 30px;
-        font-size: 2.5rem;
-        color: white;
-        cursor: pointer;
-        transition: 0.2s;
-      }
-      .lightbox-close:hover {
-        color: #ff5050;
-      }
-      footer {
-        background: #fff;
-        padding: 2.5rem 1rem;
-        margin-top: 4rem;
-        text-align: center;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-      }
-      footer h3 {
-        font-weight: 900;
-        font-size: 1.5rem;
-      }
-      footer p {
-        margin-top: 0.4rem;
-        color: #666;
-      }
-      footer .social {
-        margin-top: 1rem;
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-      }
-      footer .social a {
-        text-decoration: none;
-        font-size: 1.1rem;
-        color: #0077ff;
-        transition: 0.3s;
-      }
-      footer .social a:hover {
-        color: #005ad4;
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      @keyframes fadeInScale {
-        from {
-          opacity: 0;
-          transform: scale(0.9);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <nav>
-      <ul>
-        <li><a href="#projects">پروژه‌ها</a></li>
-        <li><a href="#contact">تماس با من</a></li>
-      </ul>
-      <div class="logo">مهدی احدی</div>
-    </nav>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پورتفولیو | مهدی احدی</title>
 
-    <header>
-      <div class="intro">
-        <h1>توسعه‌دهنده فرانت‌اند</h1>
-        <p>
-          متخصص در ساخت وبسایت‌های مدرن، ریسپانسیو با HTML, CSS, JavaScript.
-          علاقه‌مند به طراحی UI/UX. مشتاق همکاری و یادگیری فناوری های جدید با
-          سخت کوشی و استمرار
-        </p>
-        <a class="btn" href="assets/editCV.pdf">دانلود رزومه</a>
-      </div>
-      <img class="hero-img" src="assets/webdev.jpeg" alt="تصویر معرفی" />
-    </header>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-    <h2 class="section-title" id="projects">پروژه‌های من</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+font-family:B Nazanin;
+background:#f5f6fa;
+color:#222;
+line-height:1.8
+}
+a{text-decoration:none;color:inherit}
 
-    <div class="projects">
-      <!-- پروژه ۱ -->
-      <div class="project-card">
-        <img src="assets/bookstore.png" alt="سامانه کتابفروشی آنلاین" />
-        <div class="project-info">
-          <h3>سامانه کتابفروشی آنلاین</h3>
-          <p>
-            <strong>توضیح پروژه:</strong>این پروژه یک فروشگاه آنلاین کتاب است که
-            امکان مشاهده، جستجو و مدیریت محصولات را فراهم می‌کند. تمرکز اصلی روی
-            طراحی UI روان، نمایش جزئیات کامل کتاب و بارگذاری سریع صفحات بوده
-            است. این سامانه پایه‌ای مناسب برای توسعه امکاناتی مثل سبد خرید و
-            پرداخت آنلاین محسوب می‌شود.
-          </p>
-          <p><strong>تکنولوژی‌ها:</strong> HTML • CSS • JavaScript</p>
-          <div class="buttons">
-            <button
-              onclick="openLightbox('https://drive.google.com/file/d/1sen1FgJ6-UIc8HC8o0AAjrDjyUwdRkSe/preview','video')"
-            >
-              مشاهده ویدئو
-            </button>
-            <a
-              href="https://github.com/mahdifire1403/book-Store"
-              target="_blank"
-              ><button>مشاهده پروژه</button></a
-            >
-          </div>
-        </div>
-      </div>
+/* NAV */
+nav{
+background:#fff;
+padding:18px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+box-shadow:0 2px 12px rgba(0,0,0,.06);
+z-index:100
+}
+nav ul{list-style:none;display:flex;gap:22px}
+nav a:hover{color:#2563eb}
+.logo{font-weight:800;font-size:1.3rem}
 
-      <!-- پروژه ۲ -->
-      <div class="project-card">
-        <img src="assets/ielts.png" alt="سایت آموزش آیلتس" />
-        <div class="project-info">
-          <h3>سایت آموزش آیلتس</h3>
-          <p>
-            <strong>توضیح پروژه:</strong> این وبسایت با هدف معرفی دوره‌های آموزش IELTS و ارائه محتوای آموزشی طراحی شده است.
-کاربران می‌توانند اطلاعات دوره‌ها، مهارت‌ها، و سرفصل‌های آموزشی را مشاهده کرده و در صورت نیاز با آموزشگاه تماس بگیرند.
-رابط کاربری ساده و واکنش‌گرا، دسترسی راحت از موبایل و دسکتاپ را فراهم می‌کند
-          </p>
-          <p><strong>تکنولوژی‌ها:</strong> HTML • CSS • JavaScript</p>
-          <div class="buttons">
-            <button
-              onclick="openLightbox('https://drive.google.com/file/d/1F1rdsHm2_wCaJLbpv76Qz1RykXrK-EkY/preview','video')"
-            >
-              مشاهده ویدئو
-            </button>
-            <a
-              href="https://github.com/mahdifire1403/ielts-site"
-              target="_blank"
-              ><button>مشاهده پروژه</button></a
-            >
-          </div>
-        </div>
-      </div>
+/* HERO */
+.hero{
+max-width:1200px;
+margin:auto;
+padding:80px 20px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px
+}
+.hero h1{font-size:2.8rem;margin-bottom:10px}
+.hero h2{font-size:1.2rem;color:#2563eb}
+.hero p{color:#555;margin:20px 0}
+.hero-actions{display:flex;gap:15px;flex-wrap:wrap}
+.btn{
+padding:12px 22px;
+border-radius:12px;
+font-weight:600
+}
+.btn.primary{background:#2563eb;color:#fff}
+.btn.outline{border:2px solid #2563eb;color:#2563eb}
+.hero img{
+width:100%;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,.15)
+}
+.tech{
+margin-top:25px;
+display:flex;
+flex-wrap:wrap;
+gap:10px
+}
+.tech span{
+background:#e5ecff;
+padding:6px 12px;
+border-radius:20px;
+font-size:.85rem
+}
 
-      <!-- پروژه ۳ -->
-      <div class="project-card">
-        <img src="assets/fashion cloths.png" alt="فروشگاه لباس آقایان" />
-        <div class="project-info">
-          <h3>فروشگاه لباس آقایان</h3>
-          <p>
-       این فروشگاه آنلاین برای نمایش و فروش لباس آقایان طراحی شده و امکان مشاهده محصولات همراه با تصاویر و مشخصات کامل را فراهم می‌کند.
-کاربر می‌تواند مدل‌ها را بررسی کرده و قیمت و جزئیات هر لباس را ببیند.
-سایت پایه‌ای مناسب برای توسعه به یک فروشگاه کامل با قابلیت خرید آنلاین است
-          </p>
-          <p><strong>تکنولوژی‌ها:</strong> HTML • CSS • JavaScript</p>
-          <div class="buttons">
-            <button
-              onclick="openLightbox('https://drive.google.com/file/d/1tI9O18P-WSj5nFQPb5KSmbt9AR-ajHHC/preview','video')"
-            >
-              مشاهده ویدئو
-            </button>
-            <a
-              href="https://github.com/mahdifire1403/onlinecloths"
-              target="_blank"
-              ><button>مشاهده پروژه</button></a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
+/* STATS */
+.stats{
+background:#fff;
+margin:40px auto;
+max-width:1100px;
+border-radius:20px;
+padding:30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+text-align:center
+}
+.stat h3{font-size:2rem;color:#2563eb}
 
-    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-      <span class="lightbox-close" onclick="closeLightbox(event)">×</span>
-      <div id="lightbox-content" class="lightbox-content"></div>
-    </div>
+/* SECTIONS */
+section{padding:70px 20px;max-width:1200px;margin:auto}
+section h2{text-align:center;font-size:2.2rem;margin-bottom:40px}
 
-    <footer id="contact">
-      <h3>ارتباط با من</h3>
-      <p>برای همکاری پیام دهید</p>
-      <div class="social">
-        <a href="#">GitHub</a>
-        <a href="#">Email</a>
-        <a href="#">LinkedIn</a>
-      </div>
-    </footer>
+/* SKILLS */
+.skills-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px
+}
+.skill-card{
+background:#fff;
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.08)
+}
 
-    <script>
-      function openLightbox(src, type) {
-        const lightbox = document.getElementById("lightbox");
-        const content = document.getElementById("lightbox-content");
-        if (type === "image") {
-          content.innerHTML = `<img src="${src}" alt="">`;
-        } else if (type === "video") {
-          content.innerHTML = `<iframe src="${src}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-        }
-        lightbox.style.display = "flex";
-      }
-      function closeLightbox(event) {
-        if (
-          event &&
-          event.target.id !== "lightbox" &&
-          event.target.className !== "lightbox-close"
-        )
-          return;
-        const lightbox = document.getElementById("lightbox");
-        const content = document.getElementById("lightbox-content");
-        content.innerHTML = "";
-        lightbox.style.display = "none";
-      }
-    </script>
-  </body>
+/* PROJECTS */
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px
+}
+.project{
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 12px 30px rgba(0,0,0,.1)
+}
+.project img{
+width:100%;
+height:180px;
+object-fit:cover
+}
+.project-info{
+padding:20px;
+display:flex;
+flex-direction:column;
+height:100%
+}
+.project-info p{color:#555;font-size:.9rem}
+.project-info ul{margin:10px 0 20px 0;padding-right:18px;font-size:.9rem}
+.project-actions{
+margin-top:auto;
+display:flex;
+gap:10px;
+flex-wrap:wrap
+}
+.project-actions a,
+.project-actions button{
+padding:8px 14px;
+border-radius:10px;
+border:none;
+font-size:.85rem;
+cursor:pointer
+}
+.project-actions a{background:#e5ecff}
+.project-actions button{background:#2563eb;color:#fff}
+
+/* WHY ME */
+.why{
+background:#2563eb;
+color:#fff;
+border-radius:30px
+}
+.why ul{margin-top:25px;list-style:none}
+.why li{margin-bottom:12px}
+
+/* CONTACT */
+.contact{text-align:center}
+.contact a{
+display:inline-block;
+margin:10px;
+padding:12px 20px;
+border-radius:14px;
+background:#2563eb;
+color:#fff
+}
+
+/* LIGHTBOX */
+.lightbox{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.85);
+justify-content:center;
+align-items:center;
+z-index:2000
+}
+.lightbox iframe{
+width:90%;
+height:70vh;
+border-radius:16px
+}
+.close{
+position:absolute;
+top:20px;
+right:30px;
+color:#fff;
+font-size:2rem;
+cursor:pointer
+}
+
+@media(max-width:900px){
+.hero{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<ul>
+<li><a href="#projects">پروژه‌ها</a></li>
+<li><a href="#skills">مهارت‌ها</a></li>
+<li><a href="#contact">تماس</a></li>
+</ul>
+<div class="logo">مهدی احدی</div>
+</nav>
+
+<header class="hero">
+<div>
+<h1>توسعه‌دهنده Front-End</h1>
+<h2>طراحی رابط کاربری مدرن و JavaScript محور</h2>
+<p>
+پیاده‌سازی وبسایت‌های واکنش‌گرا، سریع و کاربرپسند
+با تمرکز بر UI/UX و تجربه کاربری واقعی
+</p>
+
+<div class="hero-actions">
+<a class="btn primary" href="#projects">مشاهده پروژه‌ها</a>
+<a class="btn outline" href="resume.pdf" download>دانلود رزومه</a>
+</div>
+
+<div class="tech">
+<span>HTML</span><span>CSS</span><span>JavaScript</span>
+<span>Tailwind</span><span>Git</span>
+</div>
+</div>
+
+<img src="" alt="web developer">
+</header>
+
+<div class="stats">
+<div class="stat"><h3>5+</h3><p>پروژه اجرا شده</p></div>
+<div class="stat"><h3>100%</h3><p>Responsive</p></div>
+<div class="stat"><h3>UI/UX</h3><p>تفکر طراحی</p></div>
+<div class="stat"><h3>SPA</h3><p>تعاملات پویا</p></div>
+</div>
+
+<section id="skills">
+<h2>مهارت‌های تخصصی</h2>
+<div class="skills-grid">
+<div class="skill-card"><h3>HTML & CSS</h3><p>Flexbox، Grid، ریسپانسیو استاندارد</p></div>
+<div class="skill-card"><h3>JavaScript</h3><p>مدال، اسلایدر، فرم و منطق کلاینت</p></div>
+<div class="skill-card"><h3>UI / UX</h3><p>Hierarchy، spacing و تجربه کاربری</p></div>
+<div class="skill-card"><h3>Git & GitHub</h3><p>مدیریت پروژه و انتشار</p></div>
+</div>
+</section>
+
+<section id="projects">
+<h2>پروژه‌ها</h2>
+
+<div class="projects">
+
+<div class="project">
+<img src="assets/bookstore.png">
+<div class="project-info">
+<h3>فروشگاه آنلاین کتاب</h3>
+<p>سامانه نمایش و مدیریت کتاب‌ها با رابط کاربری ساده</p>
+<ul>
+<li>UI واکنش‌گرا</li>
+<li>نمایش حرفه‌ای محصولات</li>
+<li>JavaScript محور</li>
+</ul>
+<div class="project-actions">
+<a href="https://github.com/mahdifire1403" target="_blank">GitHub</a>
+<button onclick="openVideo('https://drive.google.com/file/d/1_M5gfS0tZfsJzVMtqGGNacT6zwAqXdLA/preview')">ویدیو</button>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="why">
+<h2>چرا من؟</h2>
+<ul>
+<li>✅ کدنویسی تمیز و استاندارد</li>
+<li>✅ تمرکز واقعی بر UX</li>
+<li>✅ آماده توسعه و مقیاس‌پذیر</li>
+<li>✅ مناسب پروژه‌های فریلنسری</li>
+</ul>
+</section>
+
+<section id="contact" class="contact">
+<h2>ارتباط با من</h2>
+<a href="mailto:dft.ahadi@gmail.com">Email</a>
+<a href="https://github.com/mahdifire1403" target="_blank">GitHub</a>
+</section>
+
+<div id="lightbox" class="lightbox">
+<span class="close" onclick="closeVideo()">×</span>
+<iframe id="frame" allow="autoplay"></iframe>
+</div>
+
+<script>
+function openVideo(src){
+document.getElementById("frame").src=src;
+document.getElementById("lightbox").style.display="flex"
+}
+function closeVideo(){
+document.getElementById("frame").src="";
+document.getElementById("lightbox").style.display="none"
+}
+</script>
+
+</body>
 </html>
