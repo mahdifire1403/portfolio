@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پروژه‌ها | مهدی احدی</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:'B Nazanin',sans-serif;
+  background:#0b1220;
+  color:#d1d5db;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:4rem 1.5rem;
+}
+
+.header{
+  margin-bottom:3rem;
+}
+
+.header h1{
+  font-size:2.4rem;
+  font-weight:800;
+  color:#fff;
+}
+
+.header p{
+  max-width:600px;
+  line-height:1.8;
+  color:#9ca3af;
+}
+
+.table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:2rem;
+}
+
+.table thead{
+  background:#111827;
+}
+
+.table th,
+.table td{
+  padding:1.2rem;
+  text-align:right;
+}
+
+.table th{
+  font-weight:600;
+  color:#9ca3af;
+  font-size:.9rem;
+}
+
+.table tr{
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  transition:.3s;
+}
+
+.table tbody tr:hover{
+  background:rgba(255,255,255,0.03);
+}
+
+.project-title{
+  font-weight:600;
+  color:#fff;
+}
+
+.tech{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+}
+
+.tech span{
+  background:#1f2933;
+  color:#93c5fd;
+  font-size:.75rem;
+  padding:.25rem .6rem;
+  border-radius:999px;
+}
+
+.actions a{
+  text-decoration:none;
+  color:#60a5fa;
+  font-weight:500;
+  margin-left:1rem;
+  transition:.2s;
+}
+
+.actions a:hover{
+  color:#93c5fd;
+}
+
+.back{
+  display:inline-block;
+  margin-top:3rem;
+  color:#9ca3af;
+  text-decoration:none;
+  font-size:.9rem;
+}
+
+.back:hover{
+  color:#fff;
+}
+.glow-hover {
+    position: relative;
+    overflow: hidden;
+    rgba(80, 160, 255, 0.12); /* آبی ملایم */
+
+}
+
+.glow-hover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        600px circle at var(--x, 50%) var(--y, 50%),
+        rgba(80, 160, 255, 0.12),
+        transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.glow-hover:hover::before {
+    opacity: 1;
+}
+</style>
+</head>
+
+<body class="glow-hover">
+
+<div class="container">
+
+  <div class="header">
+    <h1>پروژه‌ها</h1>
+    <p>
+      مجموعه‌ای از پروژه‌های فرانت‌اند که با تمرکز بر UI/UX، عملکرد بالا
+      و تجربه کاربری مدرن پیاده‌سازی شده‌اند.
+    </p>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr class="glow-hover">
+        <th>نام پروژه</th>
+        <th>تکنولوژی‌ها</th>
+        <th>توضیحات</th>
+        <th>لینک</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr class="glow-hover">
+        <td class="project-title">سامانه فروشگاه آنلاین کتاب</td>
+        <td>
+          <div class="tech">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+        </td>
+        <td>فروشگاه آنلاین با رابط کاربری مدرن و مدیریت محصولات</td>
+        <td class="actions">
+          <a href="#">دمو</a>
+          <a href="#">ویدیو</a>
+        </td>
+      </tr>
+
+      <tr class="glow-hover">
+        <td class="project-title">سایت آموزش آمادگی آزمون آیلتس</td>
+        <td>
+          <div class="tech">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+        </td>
+        <td>پلتفرم آموزشی با ساختار حرفه‌ای و تمرکز بر تجربه کاربر</td>
+        <td class="actions">
+          <a href="#">دمو</a>
+          <a href="#">ویدیو</a>
+        </td>
+      </tr>
+
+      <tr class="glow-hover">
+        <td class="project-title">فروشگاه لباس آقایان</td>
+        <td>
+          <div class="tech">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+        </td>
+        <td>طراحی فروشگاه مدرن با تمرکز بر UI و نمایش محصول</td>
+        <td class="actions">
+          <a href="#">دمو</a>
+          <a href="#">ویدیو</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a href="index.html" class="back">← بازگشت به صفحه اصلی</a>
+
+</div>
+<script src="index.js"></script>
+</body>
+</html>
